@@ -1,0 +1,301 @@
+/* ==========================================================
+   Web Development Course – index page
+   Colours and fonts match the lesson slide decks.
+   Change a colour once here and it updates everywhere.
+   ========================================================== */
+
+   :root {
+    --ink: #14161f;          /* main dark colour */
+    --ink-soft: #3d414d;     /* body text */
+    --muted: #5b6070;        /* secondary text */
+    --paper: #f5f5f2;        /* page background */
+    --surface: #ffffff;      /* week rows */
+    --line: #e0dfd8;         /* borders */
+    --orange: #ff7a45;       /* bright accent (on dark backgrounds) */
+    --orange-text: #b04a1a;  /* darker orange, readable on light backgrounds */
+    --blue: #2b5fd9;         /* second accent */
+  
+    --font-body: "Rubik", Arial, sans-serif;
+    --font-code: "JetBrains Mono", "Courier New", monospace;
+  
+    --radius: 14px;
+  }
+  
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+  
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 1.0625rem;
+    line-height: 1.55;
+  }
+  
+  .wrap {
+    width: min(100% - 2.5rem, 60rem);
+    margin-inline: auto;
+  }
+  
+  /* Hides text visually but keeps it for screen readers */
+  .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+  
+  /* ---------- Header ---------- */
+  
+  .site-header {
+    background: var(--ink);
+    color: #eceae4;
+    padding: 4rem 0 7rem;
+  }
+  
+  .brand {
+    margin: 0 0 2.5rem;
+    font-family: var(--font-code);
+    font-weight: 700;
+    color: var(--orange);
+  }
+  
+  .site-header h1 {
+    margin: 0;
+    max-width: 16ch;
+    font-size: clamp(2.25rem, 6vw, 3.75rem);
+    font-weight: 700;
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+  }
+  
+  .intro {
+    margin: 1.5rem 0 0;
+    max-width: 38rem;
+    color: #a3a8b8;
+    font-size: 1.125rem;
+  }
+  
+  /* ---------- Course picker ---------- */
+  
+  .picker {
+    margin-top: -4rem;          /* overlaps the dark header */
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+  }
+  
+  .picker-buttons {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+  }
+  
+  .picker-buttons button {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.125rem;
+    padding: 1rem 1.125rem;
+    background: var(--paper);
+    border: 2px solid transparent;
+    border-radius: 10px;
+    color: var(--ink);
+    font: inherit;
+    text-align: left;
+    cursor: pointer;
+  }
+  
+  .picker-buttons button:hover {
+    border-color: var(--line);
+  }
+  
+  .picker-buttons button[aria-pressed="true"] {
+    background: var(--ink);
+    color: #eceae4;
+  }
+  
+  .picker-name {
+    font-weight: 500;
+  }
+  
+  .picker-length {
+    font-family: var(--font-code);
+    font-size: 0.875rem;
+    color: var(--muted);
+  }
+  
+  .picker-buttons button[aria-pressed="true"] .picker-length {
+    color: var(--orange);
+  }
+  
+  /* The bar: its fill width is set by script.js */
+  .track {
+    margin-top: 1.5rem;
+    height: 10px;
+    background: var(--paper);
+    border-radius: 999px;
+    overflow: hidden;
+  }
+  
+  .track-fill {
+    width: 100%;
+    height: 100%;
+    background: var(--orange);
+    border-radius: 999px;
+    transition: width 0.4s ease;
+  }
+  
+  .track-label {
+    margin: 0.625rem 0 0;
+    font-size: 0.9375rem;
+    color: var(--muted);
+  }
+  
+  /* ---------- Phases and weeks ---------- */
+  
+  .phase {
+    margin-top: 4rem;
+  }
+  
+  .phase h2 {
+    margin: 0;
+    font-size: 1.75rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+  
+  .phase-note {
+    margin: 0.25rem 0 1.25rem;
+    color: var(--muted);
+  }
+  
+  .weeks {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--surface);
+    overflow: hidden;
+  }
+  
+  .week + .week {
+    border-top: 1px solid var(--line);
+  }
+  
+  .week-link {
+    display: grid;
+    grid-template-columns: 3.5rem 1fr auto;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.125rem 1.5rem;
+    color: inherit;
+    text-decoration: none;
+  }
+  
+  a.week-link:hover {
+    background: #fff6f1;
+  }
+  
+  a.week-link:focus-visible,
+  .picker-buttons button:focus-visible {
+    outline: 3px solid var(--blue);
+    outline-offset: -3px;
+  }
+  
+  .week-num {
+    font-family: var(--font-code);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--orange-text);
+  }
+  
+  .week-body {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .week-title {
+    font-weight: 500;
+    font-size: 1.125rem;
+  }
+  
+  .week-desc {
+    color: var(--muted);
+    font-size: 0.975rem;
+  }
+  
+  .week-status {
+    font-size: 0.9375rem;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+  
+  .week-status.is-live {
+    background: var(--ink);
+    color: #eceae4;
+    padding: 0.4rem 0.9rem;
+    border-radius: 999px;
+    font-weight: 500;
+  }
+  
+  a.week-link:hover .week-status.is-live {
+    background: var(--orange-text);
+  }
+  
+  /* Weeks that aren't ready yet are slightly faded */
+  .is-soon .week-num,
+  .is-soon .week-title {
+    opacity: 0.55;
+  }
+  
+  /* ---------- Footer ---------- */
+  
+  .site-footer {
+    margin-top: 5rem;
+    padding: 2rem 0 3rem;
+    border-top: 1px solid var(--line);
+    color: var(--muted);
+  }
+  
+  /* ---------- Small screens ---------- */
+  
+  @media (max-width: 40rem) {
+    .picker-buttons {
+      grid-template-columns: 1fr;
+    }
+  
+    .week-link {
+      grid-template-columns: 2.5rem 1fr;
+    }
+  
+    .week-status {
+      grid-column: 2;
+      justify-self: start;
+    }
+  }
+  
+  /* Respect users who prefer less motion */
+  @media (prefers-reduced-motion: reduce) {
+    .track-fill {
+      transition: none;
+    }
+  }
+
+  #fullbootcamp-course{
+    display: none;
+  }
+
+  #medium-course{
+    display: none;
+  }
+
+  
