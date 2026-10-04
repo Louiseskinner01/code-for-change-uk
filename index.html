@@ -1,268 +1,139 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-GB">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Web Development Course</title>
+  <title>Code for Change UK | Free coding courses for people aged 16+</title>
+  <meta name="description" content="Code for Change UK runs free web development courses for people aged 16 and over on low incomes, from a first line of code to a portfolio employers can see.">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <meta property="og:title" content="Code for Change UK">
+  <meta property="og:image" content="https://codeforchange.org.uk/assets/logo-social.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/stylesheet.css">
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/site.css">
 </head>
 <body>
-
+  <a class="skip-link" href="#main">Skip to content</a>
   <header class="site-header">
-    <div class="wrap">
-      <p class="brand">&lt;/&gt; Web Development Course</p>
-      <h1>Learn to build the web, one week at a time.</h1>
-      <p class="intro">
-        From your first HTML page to a full Django app deployed online.
-        Pick your course below to see the weeks it covers, then open any lesson in your browser.
-      </p>
+    <div class="wrap header-inner">
+      <a class="brand" href="index.html"><img src="assets/images/code-for-change-logo.webp" alt="" class="logo-mark">Code for Change UK</a>
+
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+      <nav id="site-nav" class="site-nav" aria-label="Main">
+        <a href="about.html">About us</a>
+        <a href="what-we-do.html">What we do</a>
+        <a href="get-involved.html">Get involved</a>
+        <a href="courses/course-index.html" target="_blank" rel="noopener">Course outline</a>
+        <a class="nav-cta" href="contact.html">Contact us</a>
+      </nav>
     </div>
   </header>
+  <main id="main">
+    <section class="hero">
+      <div class="wrap hero-inner">
+        <div class="hero-text">
+          <h1>Learn to code. Change what comes next.</h1>
+          <p class="lead">Free web development courses for people aged 16 and over on low incomes. Start with no experience and finish with real websites you built yourself.</p>
+          <div class="button-row">
+            <a class="button" href="get-involved.html#learners">Join a course</a>
+            <a class="button button-quiet" href="get-involved.html#partners">Partner with us</a>
+          </div>
+        </div>
 
-  <main class="wrap">
-
-    <!-- COURSE PICKER
-         Each button's data-weeks value is the last week included in that course.
-         Change the numbers here if you change a course's length. -->
-    <section class="picker" aria-labelledby="picker-title">
-      <h2 id="picker-title" class="visually-hidden">Choose your course</h2>
-      <div class="picker-buttons" role="group" aria-label="Course length">
-        <button type="button" id="btn-6" onclick="displayShortCourse()" data-weeks="6" aria-pressed="true">
-          <span class="picker-name">Short course</span>
-          <span class="picker-length">6 weeks</span>
-        </button>
-        <button type="button" id="btn-8" onclick="displayMediumCourse()" data-weeks="8" aria-pressed="false">
-          <span class="picker-name">Medium course</span>
-          <span class="picker-length">8 weeks</span>
-        </button>
-        <button type="button" id="btn-16" onclick="displayFullbootcampCourse()" data-weeks="16" aria-pressed="false">
-          <span class="picker-name">Full bootcamp</span>
-          <span class="picker-length">16 weeks</span>
-        </button>
+        <!-- The editor types a learner's first line of code (Week 1) -->
+        <figure class="editor" aria-label="A code editor showing the HTML line Hello, world and the web page it creates">
+          <div class="editor-bar">
+            <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+            <span class="editor-file">index.html</span>
+          </div>
+          <pre class="editor-code" aria-hidden="true"><code><span class="line-no">1</span><span id="typed" data-text="<h1>Hello, world</h1>"></span><span class="caret"></span></code></pre>
+          <div class="editor-output" aria-hidden="true">
+            <p class="output-label">Your web page</p>
+            <p id="rendered" class="rendered">Hello, world</p>
+          </div>
+          <figcaption class="editor-caption">Every learner starts here, with their first line of HTML.</figcaption>
+        </figure>
       </div>
+    </section>
 
-      <!-- Progress bar showing how much of the full 16 weeks the chosen course covers -->
-      <div class="track" aria-hidden="true">
-        <div class="track-fill"></div>
+    <section class="section">
+      <div class="wrap two-col">
+        <h2>Who our courses are for</h2>
+        <div>
+          <p>Our courses are for anyone aged 16 or over who wants a way into tech and can't afford an expensive bootcamp. That includes people who are out of work, claiming Universal Credit, on a low income, or looking to change career.</p>
+          <p>You don't need any experience, qualifications or maths. You just need curiosity and a willingness to keep going when something doesn't work first time.</p>
+        </div>
       </div>
-      <p class="track-label" aria-live="polite">Showing weeks 1 to 16</p>
     </section>
 
-    <!-- PHASE 1: FRONT END (in every course) -->
-    <section class="phase" data-starts="1" id="short-course">
-      <h2>Front end fundamentals</h2>
-      <p class="phase-note">Weeks 1 to 6: included in every course</p>
-
-      <ol class="weeks">
-        <!-- A LIVE week: the whole row is a link.
-             Swap the href for your share link or weeks/week-01.html -->
-        <li class="week" data-week="1">
-          <a class="week-link" href="weeks/week1.html" target="_blank" rel="noopener">
-            <span class="week-num">01</span>
-            <span class="week-body">
-              <span class="week-title">How the web works &amp; HTML foundations</span>
-              <span class="week-desc">Clients and servers, your tools, and your first web page</span>
-            </span>
-            <span class="week-status is-live">Open lesson</span>
-          </a>
-        </li>
-
-        
-        <li class="week" data-week="2">
-          <a class="week-link" href="weeks/week2.html" target="_blank" rel="noopener">
-            <span class="week-num">02</span>
-            <span class="week-body">
-              <span class="week-title">CSS fundamentals</span>
-              <span class="week-desc">Selectors, colour, typography and the box model</span>
-            </span>
-            <span class="week-status is-live">Open lesson</span>
-          
-        </a>
-        </li>
-
-        <li class="week" data-week="3">
-          <a class="week-link" href="weeks/week3.html" target="_blank" rel="noopener">
-            <span class="week-num">03</span>
-            <span class="week-body">
-              <span class="week-title">Responsive layout</span>
-              <span class="week-desc">Flexbox, Grid, media queries and Bootstrap</span>
-            </span>
-            <span class="week-status is-live">Open lesson</span>
-          </a>
-        </li>
-
-        <li class="week" data-week="4">
-          <a class="week-link" href="weeks/week4.html" target="_blank" rel="noopener">
-            <span class="week-num">04</span>
-            <span class="week-body">
-              <span class="week-title">JavaScript basics</span>
-              <span class="week-desc">Variables, data types, conditions, loops and functions</span>
-            </span>
-            <span class="week-status is-live">Open lesson</span>
-          </a>
-        </li>
-
-        <li class="week" data-week="5">
-          <a class="week-link" href="weeks/week5.html" target="_blank" rel="noopener">
-            <span class="week-num">05</span>
-            <span class="week-body">
-              <span class="week-title">The DOM &amp; events</span>
-              <span class="week-desc">Changing a page with JavaScript when users click and type</span>
-            </span>
-            <span class="week-status is-live">Open lesson</span>
-          </a>
-        </li>
-
-        <li class="week" data-week="6">
-          <a class="week-link" href="weeks/week6.html" target="_blank" rel="noopener">
-            <span class="week-num">06</span>
-            <span class="week-body">
-              <span class="week-title">Project 1: your first website</span>
-              <span class="week-desc">Plan, build and deploy a static site to GitHub Pages</span>
-            </span>
-            <span class="week-status is-live">Open lesson</span>
-          </a>
-        </li>
-      </ol>
+    <section class="section section-tint">
+      <div class="wrap">
+        <h2>How it works</h2>
+        <ol class="steps">
+          <li>
+            <h3>Choose your course</h3>
+            <p>Six weeks, eight weeks or a full sixteen-week bootcamp, depending on your time and goals.</p>
+          </li>
+          <li>
+            <h3>Learn with a tutor</h3>
+            <p>Live sessions of one to two hours, online or in person, with help when you get stuck.</p>
+          </li>
+          <li>
+            <h3>Build real projects</h3>
+            <p>Websites, a game and a full web app, published online as your portfolio.</p>
+          </li>
+          <li>
+            <h3>Take the next step</h3>
+            <p>Help with your CV and interviews, and introductions to jobs, apprenticeships and further study.</p>
+          </li>
+        </ol>
+      </div>
     </section>
 
-    <!-- PHASE 2: INTERACTIVE JAVASCRIPT (medium course and bootcamp) -->
-    <section class="phase" data-starts="7" id="medium-course">
-      <h2>Interactive JavaScript</h2>
-      <p class="phase-note">Weeks 7 to 8: medium course and full bootcamp</p>
-
-      <ol class="weeks" start="7">
-        <li class="week" data-week="7">
-          <a class="week-link" href="weeks/week7.html" target="_blank" rel="noopener">
-            <span class="week-num">07</span>
-            <span class="week-body">
-              <span class="week-title">Project 2: an interactive game</span>
-              <span class="week-desc">Build a quiz or game that responds to the player</span>
-            </span>
-            <span class="week-status">Coming soon</span>
-          </a>
-        </li>
-
-        <li class="week" data-week="8">
-          <a class="week-link" href="weeks/week8.html" target="_blank" rel="noopener">
-            <span class="week-num">08</span>
-            <span class="week-body">
-              <span class="week-title">Git, testing &amp; polish</span>
-              <span class="week-desc">Version control, testing your code and preparing a portfolio</span>
-            </span>
-            <span class="week-status">Coming soon</span>
-          </a>
-        </li>
-      </ol>
+    <section class="section">
+      <div class="wrap two-col">
+        <h2>What you'll learn</h2>
+        <div>
+          <p>The same tools professional web developers use every day:</p>
+          <ul class="skill-list">
+            <li><strong>HTML and CSS</strong> to build and style web pages</li>
+            <li><strong>JavaScript</strong> to make pages interactive</li>
+            <li><strong>Python and Django</strong> to build full web apps with accounts and databases</li>
+            <li><strong>Git and GitHub</strong> to save your work and share it with employers</li>
+          </ul>
+          <p><a class="text-link" href="what-we-do.html">See our courses in detail</a></p>
+        </div>
+      </div>
     </section>
 
-    <!-- PHASE 3: PYTHON & DJANGO (full bootcamp only) -->
-    <section class="phase" data-starts="9" id="fullbootcamp-course">
-      <h2>Python &amp; Django</h2>
-      <p class="phase-note">Weeks 9 to 16: full bootcamp only</p>
-
-      <ol class="weeks" start="9">
-        <li class="week" data-week="9">
-          <a class="week-link" href="weeks/week9.html" target="_blank" rel="noopener">
-            <span class="week-num">09</span>
-            <span class="week-body">
-              <span class="week-title">Python essentials, part 1</span>
-              <span class="week-desc">Syntax, variables, lists, loops and functions</span>
-            </span>
-            <span class="week-status">Coming soon</span>
-          </a>
-        </li>
-
-        <li class="week" data-week="10">
-          <a class="week-link" href="weeks/week10.html" target="_blank" rel="noopener">
-            <span class="week-num">10</span>
-            <span class="week-body">
-              <span class="week-title">Python essentials, part 2</span>
-              <span class="week-desc">Dictionaries, classes and a command-line app</span>
-            </span>
-            <span class="week-status">Coming soon</span>
-          </a>
-        </li>
-
-        <li class="week" data-week="11">
-          <a class="week-link" href="weeks/week11.html" target="_blank" rel="noopener">
-            <span class="week-num">11</span>
-            <span class="week-body">
-              <span class="week-title">Django fundamentals</span>
-              <span class="week-desc">Projects, apps, views, URLs and templates</span>
-            </span>
-            <span class="week-status">Coming soon</span>
-          </a>
-        </li>
-
-        <li class="week" data-week="12">
-          <a class="week-link" href="weeks/week12.html" target="_blank" rel="noopener">
-            <span class="week-num">12</span>
-            <span class="week-body">
-              <span class="week-title">Models &amp; databases</span>
-              <span class="week-desc">Storing data with models, migrations and the admin panel</span>
-            </span>
-            <span class="week-status">Coming soon</span>
-          </a>
-        </li>
-
-        <li class="week" data-week="13">
-          <a class="week-link" href="weeks/week13.html" target="_blank" rel="noopener">
-            <span class="week-num">13</span>
-            <span class="week-body">
-              <span class="week-title">User accounts</span>
-              <span class="week-desc">Sign up, log in and pages only members can see</span>
-            </span>
-            <span class="week-status">Coming soon</span>
-          </a>
-        </li>
-
-        <li class="week" data-week="14">
-          <a class="week-link" href="weeks/week14.html" target="_blank" rel="noopener">
-            <span class="week-num">14</span>
-            <span class="week-body">
-              <span class="week-title">Building a full CRUD app</span>
-              <span class="week-desc">Create, read, update and delete with Django forms</span>
-            </span>
-            <span class="week-status">Coming soon</span>
-          </a>
-        </li>
-
-        <li class="week" data-week="15">
-          <a class="week-link" href="weeks/week15.html" target="_blank" rel="noopener">
-            <span class="week-num">15</span>
-            <span class="week-body">
-              <span class="week-title">Deployment</span>
-              <span class="week-desc">Putting your Django app online with a live database</span>
-            </span>
-            <span class="week-status">Coming soon</span>
-          </a>
-        </li>
-
-        <li class="week" data-week="16">
-          <a class="week-link" href="weeks/week16.html" target="_blank" rel="noopener">
-            <span class="week-num">16</span>
-            <span class="week-body">
-              <span class="week-title">Capstone showcase</span>
-              <span class="week-desc">Finish, present and celebrate your final project</span>
-            </span>
-            <span class="week-status">Coming soon</span>
-          </a>
-        </li>
-      </ol>
+    <section class="band">
+      <div class="wrap band-inner">
+        <div>
+          <h2>Work with us</h2>
+          <p>We're looking for Jobcentres, colleges, community groups, employers and funders who want to help more people into tech careers.</p>
+        </div>
+        <a class="button button-light" href="get-involved.html#partners">Find out how to partner</a>
+      </div>
     </section>
-
   </main>
-
   <footer class="site-footer">
-    <div class="wrap">
-      <p>Questions about the course? Contact [your name or email].</p>
+    <div class="wrap footer-inner">
+      <div>
+        <p class="footer-brand">Code for Change UK</p>
+        <p>Free coding courses for people aged 16 and over.</p>
+      </div>
+      <nav aria-label="Footer">
+        <a href="about.html">About us</a>
+        <a href="what-we-do.html">What we do</a>
+        <a href="get-involved.html">Get involved</a>
+        <a href="contact.html">Contact us</a>
+      </nav>
+      <!-- Add your registration details here once registered, for example:
+           Code for Change UK CIC, registered in England and Wales, company number 12345678 -->
+      <p class="footer-small">&copy; 2026 Code for Change UK</p>
     </div>
   </footer>
-
-  <script src="assets/js/script.js"></script>
+  <script src="assets/js/site.js"></script>
 </body>
 </html>
